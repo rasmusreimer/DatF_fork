@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Students List</title>
+</head>
+<body>
+<h1>List of students who has created a pull request:</h1>
+<ul id="students-list"></ul>
+<script>
+fetch('../src/students.txt')
+.then(response => response.text())
+.then(text => {
+const names = text.split('\n').filter(name => name.trim());
+const ul = document.getElementById('students-list');
+names.forEach(name => {
+const li = document.createElement('li');
+li.textContent = name;
+ul.appendChild(li);
+});
+});
+</script>
+</body>
+</html>
